@@ -1,0 +1,33 @@
+@import '../../common/scss/constants.scss';
+
+.table {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  text-align: left;
+
+  &__row {
+    display: block;
+    padding: 20px 0;
+    border-bottom: 1px solid $pinball;
+  }
+
+  &__cell {
+    display: inline-block;
+    width: 25%;
+    padding: 0 12px;
+  }
+
+  &__th {
+    color: $pinball;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &__td {
+    color: $night-dive;
+    font-size: 17px;
+    font-weight: 700;
+  }
+}
