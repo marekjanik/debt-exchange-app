@@ -1,5 +1,9 @@
 import { FC } from 'react';
 
-export const Header: FC = () => {
-  return <div></div>;
+import styles from './header.module.scss';
+
+type HeaderProps = {};
+
+export const Header: FC<HeaderProps> = () => {
+  return <header className={styles.header}></header>;
 };
