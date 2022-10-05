@@ -1,3 +1,16 @@
+//Media Queries
+$mobile: '(max-width: 480px)';
+$tablet: '(min-width: 481px) and (max-width: 1024px)';
+$desktop: '(min-width: 1025px)';
+$mobile-and-less: '(max-width: 479px)';
+$mobile-and-more: '(min-width: 480px)';
+$tablet-and-less: '(max-width: 1024px)';
+$tablet-and-more: '(min-width: 481px)';
+$desktop-and-more: '(min-width: 1025px)';
+
+//Paddings
+$container-padding: 0 5.2vw;
+
 //Colors
 $night-dive: #003054;
 $cadmium-red: #e40421;
