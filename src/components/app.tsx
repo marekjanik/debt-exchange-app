@@ -31,8 +31,6 @@ export const App: FC = () => {
     getDebts();
   }, [fetchDebts]);
 
-  console.log(debts);
-
   return (
     <div>
       <Header />

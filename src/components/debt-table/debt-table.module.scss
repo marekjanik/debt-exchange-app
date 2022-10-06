@@ -3,7 +3,7 @@
 .table {
   display: block;
   width: 100%;
-  margin-top: 10px;
+  margin: 10px 0 30px;
   text-align: left;
 
   &__section {
@@ -12,52 +12,8 @@
   }
 
   &__row {
-    display: block;
+    display: flex;
     padding: 20px 0;
     border-bottom: 1px solid $pinball;
-  }
-
-  &__cell {
-    display: inline-block;
-    padding: 0 12px;
-  }
-
-  &__th {
-    color: $pinball;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-
-    &__name {
-      width: 24%;
-    }
-
-    &__nip {
-      width: 16%;
-    }
-
-    &__value,
-    &__date {
-      width: 30%;
-    }
-  }
-
-  &__td {
-    color: $night-dive;
-    font-size: 17px;
-    font-weight: 700;
-
-    &__name {
-      width: 24%;
-    }
-
-    &__nip {
-      width: 16%;
-    }
-
-    &__value,
-    &__date {
-      width: 30%;
-    }
   }
 }
