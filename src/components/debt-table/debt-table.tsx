@@ -2,7 +2,13 @@ import { FC } from 'react';
 
 import { DebtTableCell } from './debt-table-cell';
 
-import { TableHeaderCellsEnum, DebtType } from '../../common';
+import {
+  TableHeaderCellsEnum,
+  DebtType,
+  formatName,
+  formatValue,
+  formatDate,
+} from '../../common';
 
 import styles from './debt-table.module.scss';
 
@@ -25,10 +31,10 @@ export const DebtTable: FC<DebtTableProps> = ({ debts }) => {
       <tbody className={styles.table__section}>
         {debts.map(({ Id, Name, NIP, Value, Date }) => (
           <tr key={Id} className={styles.table__row}>
-            <DebtTableCell type="body">{Name}</DebtTableCell>
+            <DebtTableCell type="body">{formatName(Name)}</DebtTableCell>
             <DebtTableCell type="body">{NIP}</DebtTableCell>
-            <DebtTableCell type="body">{Value}</DebtTableCell>
-            <DebtTableCell type="body">{Date}</DebtTableCell>
+            <DebtTableCell type="body">{formatValue(Value)}</DebtTableCell>
+            <DebtTableCell type="body">{formatDate(Date)}</DebtTableCell>
           </tr>
         ))}
       </tbody>
