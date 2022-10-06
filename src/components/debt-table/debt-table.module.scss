@@ -6,6 +6,11 @@
   margin-top: 10px;
   text-align: left;
 
+  &__section {
+    display: block;
+    width: 100%;
+  }
+
   &__row {
     display: block;
     padding: 20px 0;
@@ -14,7 +19,6 @@
 
   &__cell {
     display: inline-block;
-    width: 25%;
     padding: 0 12px;
   }
 
@@ -23,11 +27,37 @@
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
+
+    &__name {
+      width: 24%;
+    }
+
+    &__nip {
+      width: 16%;
+    }
+
+    &__value,
+    &__date {
+      width: 30%;
+    }
   }
 
   &__td {
     color: $night-dive;
     font-size: 17px;
     font-weight: 700;
+
+    &__name {
+      width: 24%;
+    }
+
+    &__nip {
+      width: 16%;
+    }
+
+    &__value,
+    &__date {
+      width: 30%;
+    }
   }
 }
