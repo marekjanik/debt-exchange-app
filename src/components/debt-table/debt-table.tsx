@@ -1,12 +1,16 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 
-import { TableHeaderCells } from '../../common';
+import { TableHeaderCellsEnum, DebtType } from '../../common';
 
 import styles from './debt-table.module.scss';
 
-export const DebtTable: FC = () => {
-  const { name, nip, value, date } = TableHeaderCells;
+type DebtTableProps = {
+  debts: DebtType[];
+};
+
+export const DebtTable: FC<DebtTableProps> = ({ debts }) => {
+  const { name, nip, value, date } = TableHeaderCellsEnum;
 
   return (
     <table className={styles.table}>
@@ -51,44 +55,46 @@ export const DebtTable: FC = () => {
         </tr>
       </thead>
       <tbody className={styles.table__section}>
-        <tr className={styles.table__row}>
-          <td
-            className={clsx(
-              styles.table__cell,
-              styles.table__td,
-              styles.table__td__name
-            )}
-          >
-            [Name]
-          </td>
-          <td
-            className={clsx(
-              styles.table__cell,
-              styles.table__td,
-              styles.table__td__nip
-            )}
-          >
-            [NIP]
-          </td>
-          <td
-            className={clsx(
-              styles.table__cell,
-              styles.table__td,
-              styles.table__td__value
-            )}
-          >
-            [Value]
-          </td>
-          <td
-            className={clsx(
-              styles.table__cell,
-              styles.table__td,
-              styles.table__td__date
-            )}
-          >
-            [Date]
-          </td>
-        </tr>
+        {debts.map(({ Id, Name, NIP, Value, Date }) => (
+          <tr key={Id} className={styles.table__row}>
+            <td
+              className={clsx(
+                styles.table__cell,
+                styles.table__td,
+                styles.table__td__name
+              )}
+            >
+              {Name}
+            </td>
+            <td
+              className={clsx(
+                styles.table__cell,
+                styles.table__td,
+                styles.table__td__nip
+              )}
+            >
+              {NIP}
+            </td>
+            <td
+              className={clsx(
+                styles.table__cell,
+                styles.table__td,
+                styles.table__td__value
+              )}
+            >
+              {Value}
+            </td>
+            <td
+              className={clsx(
+                styles.table__cell,
+                styles.table__td,
+                styles.table__td__date
+              )}
+            >
+              {Date}
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
