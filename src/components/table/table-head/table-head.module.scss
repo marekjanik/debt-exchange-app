@@ -1,0 +1,21 @@
+@import '../../../scss/constants.scss';
+
+.table-head {
+  display: block;
+  width: 100%;
+
+  &__row {
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid $pinball;
+  }
+
+  &__cell {
+    flex: 1 1 100%;
+    padding: 0 12px;
+    color: $pinball;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}

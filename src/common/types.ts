@@ -9,3 +9,10 @@ export type DebtType = {
   Price: number;
   Value: number;
 };
+
+export type ColumnType = {
+  label: string;
+  accessor: string;
+  sortable: boolean;
+  sortByOrder?: 'asc' | 'desc';
+};

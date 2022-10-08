@@ -1,41 +1,49 @@
 import { FC, useState, useEffect } from 'react';
 
 import { Header } from './header';
-import { DebtTable } from './debt-table';
+import { Table } from './table';
 
-import { EndpointsEnum, DebtType } from '../common';
+import { EndpointsEnum, DebtType, ColumnType } from '../common';
 
-import '../common/scss/global-styles.scss';
+import '../scss/global-styles.scss';
+
+const columns: ColumnType[] = [
+  { label: 'Dłużnik', accessor: 'Name', sortable: true, sortByOrder: 'asc' },
+  { label: 'NIP', accessor: 'NIP', sortable: true },
+  { label: 'Kwota zadłużenia', accessor: 'Value', sortable: true },
+  { label: 'Data powstania zobowiązania', accessor: 'Date', sortable: true },
+];
 
 export const App: FC = () => {
-  const [debts, setDebts] = useState<DebtType[]>([]);
+  const [data, setData] = useState<DebtType[]>([]);
 
-  const { fetchDebts } = EndpointsEnum;
+  const isTableData = data.length !== 0;
 
   useEffect(() => {
     const getDebts = async () => {
       try {
-        const response = await fetch(fetchDebts);
+        const response = await fetch(EndpointsEnum.fetchDebts);
 
         if (!response.ok) {
           throw new Error(`HTTP error: ${response.status}`);
         }
 
         const data: DebtType[] = await response.json();
-        setDebts(data);
+
+        setData(data);
       } catch (error) {
         console.error(error);
       }
     };
 
     getDebts();
-  }, [fetchDebts]);
+  }, [setData]);
 
   return (
     <div>
       <Header />
       <main className="container">
-        <DebtTable debts={debts} />
+        {isTableData && <Table columns={columns} data={data} />}
       </main>
     </div>
   );
