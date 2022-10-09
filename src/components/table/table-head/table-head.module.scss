@@ -27,6 +27,10 @@
     text-transform: uppercase;
     cursor: pointer;
 
+    &:hover {
+      color: $million-grey;
+    }
+
     @media #{$tablet-and-less} {
       font-size: 0.8em;
     }

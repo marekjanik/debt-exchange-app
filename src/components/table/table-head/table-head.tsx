@@ -10,7 +10,7 @@ type TableHeadProps = {
 };
 
 export const TableHead: FC<TableHeadProps> = ({ columns, handleSorting }) => {
-  const [sortField, setSortField] = useState('');
+  const [sortField, setSortField] = useState('Name');
   const [order, setOrder] = useState('asc');
 
   const handleSortingChange = (accessor: string) => {
@@ -25,6 +25,14 @@ export const TableHead: FC<TableHeadProps> = ({ columns, handleSorting }) => {
     <thead className={styles['table-head']}>
       <tr className={styles['table-head__row']}>
         {columns.map(({ accessor, label, sortable }) => {
+          const sortIcon = sortable
+            ? sortField === accessor && order === 'asc'
+              ? '▲'
+              : sortField === accessor && order === 'desc'
+              ? '▼'
+              : ''
+            : '';
+
           return (
             <th
               className={styles['table-head__cell']}
@@ -33,7 +41,7 @@ export const TableHead: FC<TableHeadProps> = ({ columns, handleSorting }) => {
                 sortable ? () => handleSortingChange(accessor) : undefined
               }
             >
-              {label}
+              {`${label} ${sortIcon}`}
             </th>
           );
         })}
