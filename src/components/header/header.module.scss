@@ -5,4 +5,12 @@
   padding: $container-padding;
   padding-top: 35px;
   background-color: $night-dive;
+
+  @media #{$tablet-and-less} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-top: 0;
+  }
 }

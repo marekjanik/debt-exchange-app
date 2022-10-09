@@ -8,6 +8,19 @@
     display: flex;
     padding: 20px 0;
     border-bottom: 1px solid $pinball;
+
+    @media #{$tablet-and-less} {
+      display: block;
+      margin-bottom: 30px;
+      padding: 0;
+      border: 1px solid $steam;
+      border-bottom: 3px solid $steam;
+      background-color: $zhen-zhu;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   &__cell {
@@ -16,5 +29,28 @@
     color: $night-dive;
     font-size: 17px;
     font-weight: 700;
+
+    @media #{$tablet-and-less} {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      border-bottom: 1px solid $steam;
+      text-align: right;
+      font-size: 0.8em;
+
+      &::before {
+        content: attr(data-label);
+        padding-right: 20px;
+        color: $million-grey;
+        text-align: left;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
   }
 }

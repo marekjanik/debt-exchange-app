@@ -15,13 +15,17 @@ export const TableBody: FC<TableBodyProps> = ({ data, columns }) => {
       {data.map((data) => {
         return (
           <tr className={styles['table-body__row']} key={data.Id}>
-            {columns.map(({ accessor }) => {
+            {columns.map(({ accessor, label }) => {
               const tableData = data[accessor as keyof DebtType]
                 ? data[accessor as keyof DebtType]
                 : '——';
               return (
-                <td className={styles['table-body__cell']} key={accessor}>
-                  {formatData(tableData)}
+                <td
+                  className={styles['table-body__cell']}
+                  key={accessor}
+                  data-label={label}
+                >
+                  {formatData(accessor, tableData)}
                 </td>
               );
             })}

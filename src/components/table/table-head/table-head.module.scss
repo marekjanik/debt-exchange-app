@@ -8,6 +8,14 @@
     display: flex;
     padding: 20px 0;
     border-bottom: 1px solid $pinball;
+
+    @media #{$tablet-and-less} {
+      flex-direction: column;
+      gap: 10px;
+      width: max-content;
+      padding: 0 0 30px;
+      border: none;
+    }
   }
 
   &__cell {
@@ -17,5 +25,10 @@
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
+    cursor: pointer;
+
+    @media #{$tablet-and-less} {
+      font-size: 0.8em;
+    }
   }
 }
