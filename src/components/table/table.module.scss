@@ -1,12 +1,20 @@
 @import '../../scss/constants.scss';
 
-.table {
-  display: block;
-  width: 100%;
-  margin: 10px 0 30px;
-  text-align: left;
+.table-container {
+  &__table {
+    display: block;
+    width: 100%;
+    margin: 10px 0 30px;
+    text-align: left;
 
-  @media #{$tablet-and-less} {
+    @media #{$tablet-and-less} {
+      margin: 30px auto;
+    }
+  }
+
+  &__empty,
+  &__error {
     margin: 30px 0;
+    text-align: center;
   }
 }

@@ -3,9 +3,6 @@ export enum EndpointsEnum {
   fetchFilteredDebts = 'http://rekrutacja-webhosting.it.krd.pl/api/Recruitment/GetFilteredDebts',
 }
 
-export enum TableHeaderCellsEnum {
-  name = 'Dłużnik',
-  nip = 'NIP',
-  value = 'Kwota zadłużenia',
-  date = 'Data powstania zobowiązania',
+export enum ErrorsEnum {
+  fetch = 'Error occurred while the data fetching attempt!',
 }

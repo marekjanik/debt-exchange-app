@@ -13,7 +13,7 @@ export const SearchBar: FC<SearchBarProps> = ({ onSearchPhrase }) => {
     setValue(e.currentTarget.value);
   };
 
-  const onClick = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (value) {
@@ -22,22 +22,17 @@ export const SearchBar: FC<SearchBarProps> = ({ onSearchPhrase }) => {
   };
 
   return (
-    <form
-      onClick={onClick}
-      className={styles.search}
-      role="search"
-      action="/"
-      method="get"
-    >
+    <form onSubmit={onSubmit} className={styles.search} role="search">
       <label className={styles.search__label} htmlFor="search">
         Podaj NIP lub nazwę dłużnika
       </label>
 
       <input
         className={styles.search__input}
+        onChange={onChange}
+        minLength={3}
         type="text"
         id="search"
-        onChange={onChange}
       />
 
       <button className={styles.search__button} type="submit">
