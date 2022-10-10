@@ -16,6 +16,7 @@ const columns: ColumnType[] = [
 
 export const App: FC = () => {
   const [data, setData] = useState<DebtType[]>([]);
+  const [searchPhrase, setSearchPhrase] = useState<string>('');
 
   const isTableData = data.length !== 0;
 
@@ -28,7 +29,7 @@ export const App: FC = () => {
           throw new Error(`HTTP error: ${response.status}`);
         }
 
-        const data: DebtType[] = await response.json();
+        const data = await response.json();
 
         setData(data);
       } catch (error) {
@@ -41,9 +42,11 @@ export const App: FC = () => {
 
   return (
     <div>
-      <Header />
+      <Header onSearchPhrase={setSearchPhrase} />
       <main className="container">
-        {isTableData && <Table columns={columns} data={data} />}
+        {isTableData && (
+          <Table columns={columns} data={data} searchPhrase={searchPhrase} />
+        )}
       </main>
     </div>
   );

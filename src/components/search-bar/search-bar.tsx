@@ -1,15 +1,44 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import styles from './search-bar.module.scss';
 
-export const SearchBar: FC = () => {
+type SearchBarProps = {
+  onSearchPhrase: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export const SearchBar: FC<SearchBarProps> = ({ onSearchPhrase }) => {
+  const [value, setValue] = useState<string>();
+
+  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setValue(e.currentTarget.value);
+  };
+
+  const onClick = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (value) {
+      onSearchPhrase(value);
+    }
+  };
+
   return (
-    <form className={styles.search} role="search" action="/" method="get">
+    <form
+      onClick={onClick}
+      className={styles.search}
+      role="search"
+      action="/"
+      method="get"
+    >
       <label className={styles.search__label} htmlFor="search">
         Podaj NIP lub nazwę dłużnika
       </label>
 
-      <input className={styles.search__input} type="text" id="search" />
+      <input
+        className={styles.search__input}
+        type="text"
+        id="search"
+        onChange={onChange}
+      />
 
       <button className={styles.search__button} type="submit">
         Szukaj
