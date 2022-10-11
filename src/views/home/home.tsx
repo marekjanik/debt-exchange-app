@@ -23,7 +23,7 @@ export const Home: FC = () => {
 
   useEffect(() => {
     fetchData(EndpointsEnum.fetchDebts);
-  }, []);
+  }, [fetchData]);
 
   return (
     <div className={styles.home}>

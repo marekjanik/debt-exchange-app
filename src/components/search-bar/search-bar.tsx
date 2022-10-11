@@ -7,7 +7,7 @@ type SearchBarProps = {
 };
 
 export const SearchBar: FC<SearchBarProps> = ({ onSearchPhrase }) => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string>('');
 
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value);
@@ -15,10 +15,10 @@ export const SearchBar: FC<SearchBarProps> = ({ onSearchPhrase }) => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (value) {
       onSearchPhrase(value);
     }
+    setValue('');
   };
 
   return (
@@ -29,9 +29,10 @@ export const SearchBar: FC<SearchBarProps> = ({ onSearchPhrase }) => {
 
       <input
         className={styles.search__input}
+        value={value}
         onChange={onChange}
         minLength={3}
-        type="text"
+        type="search"
         id="search"
       />
 

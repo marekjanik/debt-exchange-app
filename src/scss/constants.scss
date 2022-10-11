@@ -1,4 +1,6 @@
-//Media Queries
+/* Miejsce na stałe SCSS */
+
+// Media Queries
 $mobile: '(max-width: 480px)';
 $tablet: '(min-width: 481px) and (max-width: 1024px)';
 $desktop: '(min-width: 1025px)';
@@ -8,10 +10,10 @@ $tablet-and-less: '(max-width: 1024px)';
 $tablet-and-more: '(min-width: 481px)';
 $desktop-and-more: '(min-width: 1025px)';
 
-//Paddings
+// Paddings
 $container-padding: 0 5.2vw;
 
-//Colors
+// Colors - nazwy kolorów utworzyłem przy pomocy generatora (https://colornamer.robertcooper.me/)
 $night-dive: #003054;
 $cadmium-red: #e40421;
 $pinball: #bbbbbb;

@@ -1,5 +1,7 @@
+/* Tutaj trzymam wszystkie reużywalne typy występujace w projekcie. */
+
 export type DebtType = {
-  Adress: string;
+  Address: string;
   Date: string;
   DocumentType: string;
   Id: number;

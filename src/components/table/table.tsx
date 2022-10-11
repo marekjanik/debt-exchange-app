@@ -36,7 +36,7 @@ export const Table: FC<TableProps> = ({ columns, data, searchPhrase }) => {
         body: JSON.stringify(searchPhrase),
       });
     }
-  }, [searchPhrase]);
+  }, [searchPhrase, fetchData]);
 
   useEffect(() => {
     if (fetchedData) {

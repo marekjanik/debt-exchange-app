@@ -1,3 +1,5 @@
+/* Customowy hook odpowiadjący za sortowanie tabeli. Udostępnia funkcję sortującą wraz z domyślnie posortowanymi danymi oraz aktualnie posortowanymi danymi. */
+
 import { useState, useCallback } from 'react';
 
 const getDefaultSorting = <
@@ -10,7 +12,6 @@ const getDefaultSorting = <
   const sorted = [...defaultTableData].sort((a, b) => {
     const filterColumn = columns.filter((column) => column.sortByOrder);
 
-    // Merge all array objects into single object and extract accessor and sortbyOrder keys
     let { accessor = 'id', sortByOrder = 'asc' } = Object.assign(
       {},
       ...filterColumn

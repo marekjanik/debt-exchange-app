@@ -1,3 +1,4 @@
+// Główny komponent aplikacji
 import React, { FC } from 'react';
 
 import { Home } from '../views';

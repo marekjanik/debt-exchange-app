@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useCallback } from 'react';
 
 import { ColumnType } from '../../../common';
 
@@ -13,13 +13,16 @@ export const TableHead: FC<TableHeadProps> = ({ columns, handleSorting }) => {
   const [sortField, setSortField] = useState('Name');
   const [order, setOrder] = useState('asc');
 
-  const handleSortingChange = (accessor: string) => {
-    const sortOrder =
-      accessor === sortField && order === 'asc' ? 'desc' : 'asc';
-    setSortField(accessor);
-    setOrder(sortOrder);
-    handleSorting(accessor, sortOrder);
-  };
+  const handleSortingChange = useCallback(
+    (accessor: string) => {
+      const sortOrder =
+        accessor === sortField && order === 'asc' ? 'desc' : 'asc';
+      setSortField(accessor);
+      setOrder(sortOrder);
+      handleSorting(accessor, sortOrder);
+    },
+    [handleSorting, order, sortField]
+  );
 
   return (
     <thead className={styles['table-head']}>

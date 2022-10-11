@@ -16,6 +16,7 @@ export const TableBody: FC<TableBodyProps> = ({ data, columns }) => {
         return (
           <tr className={styles['table-body__row']} key={data.Id}>
             {columns.map(({ accessor, label }) => {
+              // Jeżeli jakaś wartość tabeli nie będzie wyświetl: '——'
               const tableData = data[accessor as keyof DebtType]
                 ? data[accessor as keyof DebtType]
                 : '——';

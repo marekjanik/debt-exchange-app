@@ -1,13 +1,15 @@
-import { useState } from 'react';
+/* Customowy hook udostępniający dane z API wraz z funkcją do ich pobierania, informacje o ewentualnym błędzie oraz o stanie ładaowania. */
 
-import { ErrorsEnum } from '../common';
+import { useState, useCallback } from 'react';
+
+import { ErrorsEnum, assertIfAreOfGivenType } from '../common';
 
 export const useFetch = <TData>() => {
   const [fetchedData, setFetchedData] = useState<TData>();
   const [error, setError] = useState<any>();
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchData = async (url: string, options?: object) => {
+  const fetchData = useCallback(async (url: string, options?: object) => {
     setIsLoading(true);
 
     try {
@@ -18,7 +20,7 @@ export const useFetch = <TData>() => {
       }
 
       const data = await response.json();
-
+      assertIfAreOfGivenType<TData>(data);
       setFetchedData(data);
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -28,7 +30,7 @@ export const useFetch = <TData>() => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   return {
     fetchedData,
